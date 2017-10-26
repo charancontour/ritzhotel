@@ -35,7 +35,6 @@ class PromocodesController extends Controller {
 	public function index($limit = 10)
 	{
 		$page = 0;
-		
 		if(Input::get('page')){
 			$page = Input::get('page');
 		}

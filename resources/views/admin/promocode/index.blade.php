@@ -80,6 +80,28 @@
                             </div>
                         </div>
 
+                        <!-- Please select one item -->
+                        <div id="please-select-one" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                        <h4 id="modal-login-label3" class="modal-title"><a href="#"><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete all items? </h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="alert alert-danger" role="alert">
+                                          Please select atleast one element for delete.
+                                        </div>
+                                        <div class="form-actions">
+                                            <div class="col-md-offset-4 col-md-8"> 
+                                                <a href="#" class="btn btn-green" data-dismiss="modal">OK &nbsp;<i class="fa fa-times"></i></a>&nbsp; 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div id="modal-delete-all" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -289,9 +311,9 @@ $(function(){
 	});
 })
 function deleteSelected(){
-	values = $('.chk-promocode:checked');
+    values = $('.chk-promocode:checked');
 	if (values.length==0){
-		alert('Please select at least one promocode before delete.');	
+        $('#please-select-one').modal('show');	
 		return false;
 	}
 	$('#modal-delete-selected').modal('show');

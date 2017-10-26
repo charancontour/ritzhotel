@@ -288,9 +288,9 @@ $(function(){
 	});
 })
 function deleteSelected(){
-	values = $('.chk-promocode:checked');
+    values = $('.chk-promocode:checked');
 	if (values.length==0){
-		alert('Please select at least one promocode before delete.');	
+		alert('Hello there');	
 		return false;
 	}
 	$('#modal-delete-selected').modal('show');
