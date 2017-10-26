@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE 8]>
 <html class="ie8"><![endif]-->
 <!--[if IE 9]>
@@ -323,6 +323,7 @@
                   return false;
         });
     </script>
+    @yield('customScripts')
   </body>
 
 </html>

@@ -49,12 +49,12 @@
                             
                             <div class="col-md-6 col-sm-6 padding-right">
                               <p>
-                                <input min="8" max="12" required type="password" name="password" id="password" aria-required="true" placeholder="Your New Password *" class="form-controllar">
+                                <input min="8" max="12" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" id="password" aria-required="true" placeholder="Your New Password *" class="form-controllar">
                               </p>
                             </div><!--/.col-md-6-->
                             <div class="col-md-6 col-sm-6 padding-right">
                               <p>
-                                <input min="8" max="12" required type="password" name="passconf" id="passconf" aria-required="true" placeholder="Verify New Password *" class="form-controllar">
+                                <input min="8" max="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required type="password" name="passconf" id="passconf" aria-required="true" placeholder="Verify New Password *" class="form-controllar">
                               </p>
                             </div><!--/.col-md-6-->
                             
@@ -172,5 +172,22 @@
     // Brands & Services are done in the templateFront.blade.php
     if(isset($brands_scroller)) unset($brands_scroller);
 ?>
+@endsection
 
+@section('customScripts')
+<script type="text/javascript">
+var password = document.getElementById("password"),
+    confirm_password = document.getElementById("passconf");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
 @endsection

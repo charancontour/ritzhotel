@@ -566,6 +566,7 @@ class UserController extends Controller {
 	function passwordresetpost()
 	{
 		$post= $_POST;
+		dd($post);
 		$email= $post['email'];
 		$code= $post['code'];
 		$password= $post['password'];
@@ -604,6 +605,7 @@ class UserController extends Controller {
 		else
 		{
 				$data['password'] = Hash::make($password);
+				
 				$data['code'] = '';
 				DB::table('customers')->where('email', $email)->update($data);
 
