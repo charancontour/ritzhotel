@@ -4,8 +4,7 @@
 
 <?php
 	$ordersModel = new App\Http\Models\Admin\Orders();
-	$orderTax = $ordersModel->getOrderTax($userOrderDetails[0]->id);
-//dd($order, $orderTax);
+	$orderTax = $ordersModel->getOrderTax($userOrderDetails[0]->id);    
 ?>
         <section id="content">
         	<div id="page-header">
@@ -137,18 +136,19 @@
                                     </thead>
                                     <tbody>
                                     	@foreach($orderTax->products as $orderProduct)
+
                                             <tr>
-                                                <td class="item-code">{{ $orderProduct->product_code }}</td>
+                                                <td class="item-code">{{ $orderProduct->room_code }}</td>
                                                 <td class="item-name-col">
                                                     <figure><a href="{{ url('web88cms/products/editProduct/' . $orderProduct->product_id) }}">
-                                                    	<img src="{{ asset('/public/admin/products/medium/' . $orderProduct->thumbnail_image_1) }}" alt="{{ $orderProduct->product_name }}" class="img-responsive">
+                                                    	<img src="{{ asset('/public/admin/products/medium/' . $orderProduct->thumbnail_image_1) }}" alt="{{ $orderProduct->type }}" class="img-responsive">
                                                     </a></figure>
                                                     <header class="item-name">
-                                                        <a href="{{ url('web88cms/products/editProduct/' . $orderProduct->product_id) }}">{{ $orderProduct->product_name }}</a>
+                                                        <a href="{{ url('web88cms/products/editProduct/' . $orderProduct->product_id) }}">{{ $orderProduct->type }}</a>
                                                     </header>
                                                     <ul>
-                                                      @if($orderProduct->color_name)
-	                                                      <li>Color: {{ $orderProduct->color_name }}</li>
+                                                      @if($orderProduct->colors)
+	                                                      <li>Color: {{ $orderProduct->colors }}</li>
                                                       @endif
 
                                                       @if($orderProduct->event_type)

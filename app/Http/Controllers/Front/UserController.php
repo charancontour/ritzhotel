@@ -467,14 +467,13 @@ class UserController extends Controller {
 	public function orderdetails($id){
 		if(Session::get('userId')!='' and Session::get('userEmail')!=''){
 			$this->data['page_title'] = 'Order Detail';
-
 			//Load left
 			$this->data['user_left'] = view('front.user.userLeft');
 
 			///Get all order of user
 			$this->data['userOrderDetails'] = $this->UsersModel->getOrderDetail($id);
-
-			$this->data['orderProducts'] = $this->UsersModel->getOrderToProduct($id);
+			
+			$this->data['orderProducts'] = $this->UsersModel->getOrderToProduct($id);			
 
 			return view('front.user.orderdetails', $this->data);
 		}else{

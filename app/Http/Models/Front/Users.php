@@ -414,7 +414,12 @@ class Users extends Model{
 
     ////Get product list for an order
     public function getOrderToProduct($order_id){
-        return DB::table('order_to_product as otp')->select('otp.*', 'p.product_name', 'p.product_code', 'p.thumbnail_image_1', 'p.thumbnail_image_2', 'c.title as color_name')->leftjoin('colors as c','c.id', '=','otp.color_id' )->leftjoin('products as p','p.id', '=','otp.product_id' )->where('otp.order_id', $order_id)->get();
+        return DB::table('order_to_product as otp')
+                    ->select('otp.*', 'p.type as product_name', 'p.room_code as product_code', 'p.thumbnail_image_1', 'p.thumbnail_image_2', 'c.title as color_name')
+                    ->leftjoin('colors as c','c.id', '=','otp.color_id' )
+                    ->leftjoin('products as p','p.id', '=','otp.product_id' )
+                    ->where('otp.order_id', $order_id)
+                    ->get();
     }
 
 }
